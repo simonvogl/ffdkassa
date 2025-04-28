@@ -46,7 +46,7 @@ RUN gunzip /etc/tmx-cups/ppd/tm-impact-receipt-rastertotmu.ppd.gz
 RUN cp /etc/tmx-cups/ppd/tm-impact-receipt-rastertotmu.ppd /usr/share/cups/model
 RUN /etc/init.d/cups restart
 #install printserver 
-RUN apt update && apt install default-jre cups-bsd
+RUN apt update && apt install default-jre cups-bsd -y
 RUN mkdir /etc/ordersprinter
 RUN wget https://www.ordersprinter.de/ordersprinter-2_8_20.zip -P /etc/ordersprinter
 RUN unzip /etc/ordersprinter/ordersprinter-2_8_20.zip -d /etc/ordersprinter

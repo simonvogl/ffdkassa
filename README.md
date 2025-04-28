@@ -1,2 +1,2 @@
 # ffdkassa
-kassa vom feuerwehrfest dürnstein
+kassensystem vom feuerwehrfest dürnstein

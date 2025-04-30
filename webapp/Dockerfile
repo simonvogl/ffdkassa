@@ -9,3 +9,5 @@ RUN install-php-extensions \
         curl \
         zip \
         xml
+#copy php.ini
+COPY ./php.ini /usr/local/etc/php/php.ini

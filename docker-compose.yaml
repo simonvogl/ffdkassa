@@ -1,49 +1,52 @@
 services:
-    cups:
+  cups:
     build:
-      	context: ./printserver
-     	dockerfile: Dockerfile
-        container_name: printserver
-        restart: unless-stopped
-        networks:
-           vlan:
-            ipv4_address: 10.100.10.3
-        ports:
-            - "632:631"
-        environment:
-            - CUPSADMIN=user
-            - CUPSPASSWORD=password
-            - TZ="Europe/Vienna"
-    mariadb:
-    	image: mariadb
-    	hostname: mariadb
-    	networks:
-      		- kleschnet
-    	container_name: mariadb
-    	restart: unless-stopped
-    	volumes:
-      		- db-mariadb:/var/lib/mysql:rw
-    	ports:
-      		- "3307:3306"
-    	environment:
-      		- MYSQL_ROOT_PASSWORD=rootsecretpassword
-      		- MYSQL_DATABASE=kassa
-      		- MYSQL_USER=user
-      		- MYSQL_PASSWORD=password
-    frankenphp:
-    	build:
-      		context: ./webapp
-     		dockerfile: Dockerfile
-    	hostname: frankenphp
-    	restart: unless-stopped
-    	networks:
-     		- kleschnet
-   		depends_on:
-      		- mariadb
-    	ports:
-      		- "80:80"
-    	volumes:
-      		- /etc/kassa/web:/app/public
+      context: ./printserver
+      dockerfile: Dockerfile
+    container_name: printserver
+    restart: unless-stopped
+    networks:
+      vlan:
+        ipv4_address: 10.100.10.3
+    ports:
+      - "632:631"
+    environment:
+      - CUPSADMIN=user
+      - CUPSPASSWORD=password
+      - TZ=Europe/Vienna
+
+  mariadb:
+    image: mariadb
+    hostname: mariadb
+    networks:
+      - kleschnet
+    container_name: mariadb
+    restart: unless-stopped
+    volumes:
+      - db-mariadb:/var/lib/mysql:rw
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootsecretpassword
+      - MYSQL_DATABASE=kassa
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+
+  frankenphp:
+    build:
+      context: ./webapp
+      dockerfile: Dockerfile
+    hostname: frankenphp
+    restart: unless-stopped
+    networks:
+      - kleschnet
+    depends_on:
+      - mariadb
+    ports:
+      - "80:80"
+    volumes:
+      - /etc/kassa/web:/app/public
+
 networks:
   kleschnet:
   vlan:
@@ -55,5 +58,6 @@ networks:
         - subnet: "10.0.0.0/8"
           ip_range: "10.100.10.0/24"
           gateway: "10.100.10.1"
+
 volumes:
-	db-mariadb:
+  db-mariadb:

@@ -6,10 +6,9 @@ services:
     container_name: printserver
     restart: unless-stopped
     networks:
+      kleschnet:
       vlan:
         ipv4_address: 10.100.10.3
-    ports:
-      - "632:631"
     environment:
       - CUPSADMIN=user
       - CUPSPASSWORD=password
@@ -37,6 +36,7 @@ services:
       context: ./webapp
       dockerfile: Dockerfile
     hostname: frankenphp
+    container_name: frankenphp
     restart: unless-stopped
     networks:
       - kleschnet

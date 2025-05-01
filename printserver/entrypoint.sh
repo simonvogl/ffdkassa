@@ -19,3 +19,5 @@ fi
 /usr/bin/java -jar /etc/ordersprinter/printserver/javaprinter/javaprinter.jar -configfile=/etc/ordersprinter/printserver/javaprinter/config1.json --mode=cups --cupsprinter=printer1 &
 /usr/bin/java -jar /etc/ordersprinter/printserver/javaprinter/javaprinter.jar -configfile=/etc/ordersprinter/printserver/javaprinter/config2.json --mode=cups --cupsprinter=printer2 &
 /usr/bin/java -jar /etc/ordersprinter/printserver/javaprinter/javaprinter.jar -configfile=/etc/ordersprinter/printserver/javaprinter/config3.json --mode=cups --cupsprinter=printer3 &
+
+wait

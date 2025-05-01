@@ -1,0 +1,16 @@
+{
+   "instance" : 3,
+   "vendorid" : "4348",
+   "productid" : "5584",
+   "printersize" : 40,
+   "printcode" : "123",
+   "baseurl":"http://frankenphp",
+   "baseusername" : "",
+   "basepass" : "",
+   "escinits" : [ 27, 64, 27, 116, 0 ],
+   "escposts" : [ 29, 86, 66, 10, 27, 64],
+   "useeveryprintdevice" : 1,
+   "verbose_closing_summary" : 1,
+   "smallformat" : 0,
+   "logoscale" : 1.0
+}

@@ -50,17 +50,9 @@ RUN apt update && apt install default-jre cups-bsd -y
 RUN mkdir /etc/ordersprinter
 RUN wget https://www.ordersprinter.de/ordersprinter-2_8_20.zip -P /etc/ordersprinter
 RUN unzip /etc/ordersprinter/ordersprinter-2_8_20.zip -d /etc/ordersprinter
-RUN cp /etc/ordersprinter/printserver/javaprinter/config.json /etc/ordersprinter/printserver/javaprinter/config1.json
-RUN cp /etc/ordersprinter/printserver/javaprinter/config.json /etc/ordersprinter/printserver/javaprinter/config2.json
-RUN cp /etc/ordersprinter/printserver/javaprinter/config.json /etc/ordersprinter/printserver/javaprinter/config3.json
-RUN sed -i "s|http://localhost|http://frankenphp|g" /etc/ordersprinter/printserver/javaprinter/config1.json
-RUN sed -i "s|http://localhost|http://frankenphp|g" /etc/ordersprinter/printserver/javaprinter/config2.json
-RUN sed -i "s|http://localhost|http://frankenphp|g" /etc/ordersprinter/printserver/javaprinter/config3.json
-RUN sed -i "s|"instance" : 1|"instance" : 2|g" /etc/ordersprinter/printserver/javaprinter/config2.json
-RUN sed -i "s|"instance" : 1|"instance" : 3|g" /etc/ordersprinter/printserver/javaprinter/config3.json
-RUN sed -i "s|"printersize" : 32|"printersize" : 40|g" /etc/ordersprinter/printserver/javaprinter/config1.json
-RUN sed -i "s|"printersize" : 32|"printersize" : 40|g" /etc/ordersprinter/printserver/javaprinter/config2.json
-RUN sed -i "s|"printersize" : 32|"printersize" : 40|g" /etc/ordersprinter/printserver/javaprinter/config3.json      
+COPY ./config1.json /etc/ordersprinter/printserver/javaprinter/config1.json
+COPY ./config2.json /etc/ordersprinter/printserver/javaprinter/config2.json
+COPY ./config3.json /etc/ordersprinter/printserver/javaprinter/config3.json
 # back up cups configs in case used does not add their own
 
 RUN cp -rp /etc/cups /etc/cups-bak

@@ -1,8 +1,8 @@
 services:
     cups:
-    	build:
-      		context: ./printserver
-     		dockerfile: Dockerfile
+    build:
+      	context: ./printserver
+     	dockerfile: Dockerfile
         container_name: printserver
         restart: unless-stopped
         networks:

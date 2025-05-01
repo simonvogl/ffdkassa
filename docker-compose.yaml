@@ -45,7 +45,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - /etc/kassa/web:/app/public
+      - /etc/ffdkassa/web:/app/public
 
 networks:
   kleschnet:

@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     container_name: printserver
     restart: unless-stopped
+    ports:
+      - "631:631"
     networks:
       kleschnet:
       vlan:
